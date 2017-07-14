@@ -34,17 +34,10 @@ passport.use(new GitHubStrategy({
     // TODO: Use promises here plizzz.
     User.findOne({githubId:newUser.githubId}).exec()
     .then(user => {
-      if(!user) {
-        return new User(newUser).save();
-      }else{
-        debug(`Updating id ${user._id}`);
-        return User.findByIdAndUpdate(user._id, newUser,{new:true}).exec();
-      }
+      if(!user) return new User(newUser).save();
+      return User.findByIdAndUpdate(user._id, newUser,{new:true}).exec();
     })
-    .then( user => {
-      debug(`Done id ${user._id}`);
-      return next(null, user)
-    })
+    .then( user => next(null, user))
     .catch(e => next(e));
   }
 ));
