@@ -25,13 +25,12 @@ passport.use(new GitHubStrategy({
       token: accessToken,
       githubId: profile._json.id || '',
       name: profile._json.name || '',
-      username: profile._json.username || '',
+      username: profile._json.login || '',
       email: profile._json.email || '',
       avatar: profile._json.avatar_url || ''
     };
     console.log(newUser);
 
-    // TODO: Use promises here plizzz.
     User.findOne({githubId:newUser.githubId}).exec()
     .then(user => {
       if(!user) return new User(newUser).save();

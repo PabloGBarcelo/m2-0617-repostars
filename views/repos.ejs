@@ -1,0 +1,14 @@
+<a href="/">Go to login</a>
+<h2>LIST OF REPOS</h2>
+<h3>There are a total of <%= repos.length %> repos</h3>
+<% repos.forEach( (repo) =>{ %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a href="<%= repo.html_url %>"><h3 class="panel-title"><%= repo.name %></h3></a>
+    </div>
+    <div class="panel-body">
+      <div class="alert alert-warning" role="alert">Language: <%= repo.language %></div>
+      <p><%= repo.description %></p>
+    </div>
+  </div>
+<% }) %>
