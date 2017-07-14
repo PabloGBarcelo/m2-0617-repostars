@@ -9,7 +9,7 @@ passport.deserializeUser(function(obj, cb) { cb(null, obj);  });
 passport.use(new GitHubStrategy({
     clientID:     process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/github"
+    callbackURL: "http://localhost:3000/auth/github"
   },
   (accessToken, refreshToken, profile, done) => {
     // save the user if it doesn't exist
