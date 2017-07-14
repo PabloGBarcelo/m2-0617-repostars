@@ -6,6 +6,7 @@ const router = express.Router();
 router.get('/login',
   passport.authenticate('github', { scope: [ 'user:email' ] }));
 
+// RUTA DE CALLBACK CONFIGURADA EN GITHUB
 router.get('/github',
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {

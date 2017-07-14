@@ -9,6 +9,8 @@ const bodyParser = require('body-parser');
 const debug = require('debug')(`repostars:${path.basename(__filename).split('.')[0]}`);
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+mongoose.Promise = Promise;
+
 const passport = require('passport');
 
 // Repostars dependencies
