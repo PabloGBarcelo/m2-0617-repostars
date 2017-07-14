@@ -1,3 +1,4 @@
+// Node modules dependencies
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -5,11 +6,16 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const debug = require('debug')(`repostars:${path.basename(__filename).split('.')[0]}`);
-
 const expressLayouts = require('express-ejs-layouts');
+const mongoose = require('mongoose');
 
+// Repostars dependencies
+const dbURL = require('./config/db').dbURL;
 const index = require('./routes/index');
 const users = require('./routes/users');
+
+// Connect to mongo database
+mongoose.connect(dbURL).then( () => debug('DB Connected!'));
 
 const app = express();
 
